@@ -131,7 +131,22 @@ const showListNames = () => {
 }
 
 const showAddresses = () => {
-    
+    const addressArea = document.querySelector(".list-addresses")
+    const list = document.createElement("ul")
+    if (addressArea.innerHTML === "") {
+        return fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(usersObj => {
+                usersObj.forEach(user => {
+                    list.innerHTML += `<li>${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</li>`
+                    addressArea.appendChild(list)
+                })
+
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    } else {addressArea.innerHTML = ""}
 }
 
 /* const fetchForAll = () => {
