@@ -1,3 +1,7 @@
+window.onload = () => {
+    displayUsers();
+}
+
 const displayUsers = async () => {
     try {
         const response = await fetch("https://jsonplaceholder.typicode.com/users")
@@ -14,6 +18,7 @@ const displayUsers = async () => {
                     <td>${user.name}</td>
                     <td>${user.username}</td>
                     <td>${user.email}</td>
+                    <td><span class="btn btn-sm btn-secondary text-white rounded det-btn" onclick="window.location.assign('./details.html?id='+ ${user.id})">Details</span></td>
                     `
 
                 table.appendChild(tRow)
@@ -64,6 +69,7 @@ const searchFeature = (event) => {
                         <td>${user.name}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
+                        <td><span class="btn btn-sm btn-secondary text-white rounded det-btn" onclick="window.location.assign('./details.html?id='+ ${user.id})">Details</span></td>
                         `
                     resultsArea.appendChild(tRow)
                 })
@@ -80,6 +86,7 @@ const searchFeature = (event) => {
                             <td>${user.name}</td>
                             <td>${user.username}</td>
                             <td>${user.email}</td>
+                            <td><span class="btn btn-sm btn-secondary text-white rounded det-btn" onclick="window.location.assign('./details.html?id='+ ${user.id})">Details</span></td>
                             `
                     resultsArea.appendChild(tRow)
                 })
@@ -96,6 +103,7 @@ const searchFeature = (event) => {
                         <td>${user.name}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
+                        <td><span class="btn btn-sm btn-secondary text-white rounded det-btn" onclick="window.location.assign('./details.html?id='+ ${user.id})">Details</span></td>
                         `
                     resultsArea.appendChild(tRow)
                 })
@@ -127,7 +135,7 @@ const showListNames = () => {
             .catch(err => {
                 console.error(err);
             })
-    } else {listArea.innerHTML = ""}
+    } else { listArea.innerHTML = "" }
 }
 
 const showAddresses = () => {
@@ -146,8 +154,9 @@ const showAddresses = () => {
             .catch(err => {
                 console.error(err);
             })
-    } else {addressArea.innerHTML = ""}
+    } else { addressArea.innerHTML = "" }
 }
+
 
 /* const fetchForAll = () => {
   return fetch("https://jsonplaceholder.typicode.com/users")
@@ -169,7 +178,3 @@ window.addEventListener("DOMContentLoaded", () => {
   list.innerHTML = `<li>${user.name}</li>`
   resultsArea.appendChild(list)
 }) */
-
-window.onload = () => {
-    displayUsers();
-}
