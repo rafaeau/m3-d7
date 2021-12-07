@@ -22,7 +22,7 @@ const displayUsers = async () => {
                     `
 
                 table.appendChild(tRow)
-                console.log(user)
+                /* console.log(user) */
             })
 
         }
@@ -155,6 +155,34 @@ const showAddresses = () => {
                 console.error(err);
             })
     } else { addressArea.innerHTML = "" }
+}
+
+const sortNames = () => {
+    namesSortedAZ = []
+    return fetch("https://jsonplaceholder.typicode.com/users")
+        .then(response => response.json())
+        .then(usersObj => {
+            const resultsArea = document.querySelector("tbody")
+            resultsArea.innerHTML = ""
+
+            const filteredResult = usersObj.sort((a, b) => a.name.localeCompare(b.name))
+            console.log(filteredResult)
+            filteredResult.forEach(user => {
+                const tRow = document.createElement("tr")
+                tRow.innerHTML =
+                    `
+                    <th scope="row">${user.id}</th>
+                    <td>${user.name}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                    <td><span class="btn btn-sm btn-secondary text-white rounded det-btn" onclick="window.location.assign('./details.html?id='+ ${user.id})">Details</span></td>
+                    `
+                resultsArea.appendChild(tRow)
+            })
+        })
+        .catch(err => {
+            console.error(err);
+        })
 }
 
 

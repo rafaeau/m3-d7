@@ -14,13 +14,13 @@
     <h1 class="text-center mt-3">User database filter</h1>
 
     <div class="container">
-        <select id="dropdown">
-            <option value="name" selected="selected">Name</option>
-            <option value="username">Username</option>
-            <option value="email">Email</option>
-        </select>
-
-        <div class="input-group mb-3">
+        
+        <div class="input-group my-5">
+            <select id="dropdown" class="dropdown bg-secondary text-white">
+                <option class="bg-white text-dark" value="name" selected="selected">Name</option>
+                <option class="bg-white text-dark" value="username">Username</option>
+                <option class="bg-white text-dark" value="email">Email</option>
+            </select>
             <input type="text" class="form-control" placeholder="Enter user info" aria-label="Example text with button addon" onkeydown="searchFeature(event)"
               aria-describedby="button-addon1">
             <div class="input-group-prepend">
@@ -28,8 +28,8 @@
             </div>
         </div>
 
-        <button class="btn btn-secondary text-center" type="button" data-toggle="collapse" id="btn-show" onclick="showListNames()" value="show-names">Show list of names</button>
-        <button class="btn btn-secondary text-center" type="button" data-toggle="collapse" id="btn-show" onclick="showAddresses()" value="show-names">Show addresses</button>
+        <button class="btn btn-secondary text-center mt-4" type="button" data-toggle="collapse" id="btn-show" onclick="showListNames()" value="show-names">Show list of names</button>
+        <button class="btn btn-secondary text-center mt-4" type="button" data-toggle="collapse" id="btn-show" onclick="showAddresses()" value="show-names">Show addresses</button>
 
         <div class="text-center justify-content-center d-none" id="spinner-border">
             <div class="spinner-border text-secondary mt-5" role="status"></div>
@@ -47,7 +47,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
-                <th scope="col"></th>
+                <th scope="col"><span class="btn btn-sm btn-info text-black rounded det-btn" onclick="sortNames()">Sort by name</span></th>
             </tr>
             </thead>
             <tbody>
