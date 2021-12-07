@@ -14,24 +14,29 @@
     <h1 class="text-center mt-3">User database filter</h1>
 
     <div class="container">
-        <div class="dropdown text-center mt-4 mb-5">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
-              Filter
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">Name</button>
-              <button class="dropdown-item" type="button">Username</button>
-              <button class="dropdown-item" type="button">Email</button>
+        <select id="dropdown">
+            <option value="name" selected="selected">Name</option>
+            <option value="username">Username</option>
+            <option value="email">Email</option>
+        </select>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter user info" aria-label="Example text with button addon" onkeydown="searchFeature(event)"
+              aria-describedby="button-addon1">
+            <div class="input-group-prepend">
+                <button class="btn btn-secondary" type="button" id="button-addon1" onclick="searchFeature()">Search</button>
             </div>
         </div>
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter user" oninput="searchFeature(event)" aria-label="Example text with button addon"
-              aria-describedby="button-addon1">
-            <div class="input-group-prepend">
-                <button class="btn btn-secondary" type="button" id="button-addon1">Search</button>
-            </div>
+        <button class="btn btn-secondary text-center" type="button" data-toggle="collapse" id="btn-show" onclick="showListNames()" value="show-names">Show list of names</button>
+        <button class="btn btn-secondary text-center" type="button" data-toggle="collapse" id="btn-show" onclick="showAddresses()" value="show-names">Show addresses</button>
+
+        <div class="text-center justify-content-center d-none" id="spinner-border">
+            <div class="spinner-border text-secondary mt-5" role="status"></div>
         </div>
+
+        <div class="list-names mt-5 col-6"></div>
+        <div class="list-addresses mt-5 col-6"></div>
 
         <table class="table table-hover mt-5">
             <thead>
